@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Your Bot</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <h2>Create AI Chatbot</h2>
+  <form id="botForm" enctype="multipart/form-data">
+    <input type="text" name="agent_name" placeholder="Bot Name" required><br>
+    <input type="url" name="website" placeholder="Website URL" required><br>
+    <select name="model" required>
+      <option value="GPT 4o Mini">GPT 4o Mini</option>
+      <option value="GPT 4o">GPT 4o</option>
+      <option value="Gpt Turbo 3o">GPT Turbo 3o</option>
+    </select><br>
+    <input type="text" name="name" placeholder="Full Name" required><br>
+    <input type="file" name="data" required><br>
+    <button type="submit">Create Bot</button>
+  </form>
+  <div id="result"></div>
+  <script>
+    document.getElementById("botForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const res = await fetch("https://your-n8n-domain.com/webhook/your-id", {
+        method: "POST",
+        body: formData
+      });
+      const data = await res.json();
+      document.getElementById("result").innerHTML = "Bot Created! Token: " + data.token;
+    });
+  </script>
+</body>
+</html>

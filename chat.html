@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat with Bot</title>
+</head>
+<body>
+  <h2>Chat Page</h2>
+  <p>This is where embedded AI chat would appear for token: <span id="token"></span></p>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    document.getElementById("token").textContent = token;
+  </script>
+</body>
+</html>
